@@ -8,16 +8,11 @@ import objects.BasicEnemy;
 import objects.BossEnemy;
 import objects.HardEnemy;
 import objects.Player;
-
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-
 import static graphics.Assets.player;
 
-/**
- * Created by oxana_bs on 9.4.2016 г..
- */
 public class Game implements Runnable {
     private String name;
     private int width, height;
@@ -50,10 +45,10 @@ public class Game implements Runnable {
     public void init() {
         // Assets.init();
         this.display = new Display(this.name, this.width, this.height);
-        this.img = ResourceLoader.loadResource("/texture/grass.jpg");
+        this.img = ResourceLoader.loadResource("/texture/grass_logo2.jpg");
         this.sh = new SpriteSheet(ResourceLoader.loadResource("/texture/15_tank_set.png"));
         this.shObstacles = new SpriteSheet(ResourceLoader.loadResource("/texture/obstacles_1.png"));
-        this.ss1 = new SpriteSheet(ResourceLoader.loadResource("/texture/1.png"));
+        this.ss1 = new SpriteSheet(ResourceLoader.loadResource("/texture/tankUp.png"));
         player = new Player(350, 400);
         basicEnemy1 = new BasicEnemy(200, 250);
         basicEnemy2 = new BasicEnemy(500, 250);
@@ -85,16 +80,16 @@ public class Game implements Runnable {
         }
 
         this.g = this.bs.getDrawGraphics();
-        this.g.drawImage(ResourceLoader.loadResource("/texture/grass.jpg"), 0, 0, 800, 600, null);
-        BufferedImage imgPlayer = ResourceLoader.loadResource("/texture/1.png");
+        this.g.drawImage(ResourceLoader.loadResource("/texture/grass_logo2.jpg"), 0, 0, 800, 600, null);
+        BufferedImage imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");
         if (player.goingDown) {
-           imgPlayer = ResourceLoader.loadResource("/texture/3.png");
+           imgPlayer = ResourceLoader.loadResource("/texture/tankDown.png");
         } else if (player.goingLeft) {
-            imgPlayer = ResourceLoader.loadResource("/texture/4.png");
+            imgPlayer = ResourceLoader.loadResource("/texture/tankLeft.png");
         } else if (player.goingRight) {
-            imgPlayer = ResourceLoader.loadResource("/texture/2.png");
+            imgPlayer = ResourceLoader.loadResource("/texture/tankRight.png");
         } else if (player.goingUp) {
-            imgPlayer = ResourceLoader.loadResource("/texture/1.png");
+            imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");
         }
         //BufferedImage imgPlayer = sh.cut(0, 0, 68, 68);
         BufferedImage imgBasicEnemy = sh.cut(68, 0, 68, 68);
@@ -115,6 +110,13 @@ public class Game implements Runnable {
 
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 249, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 300, null);
+
+        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 349, null);
+        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 299, null);
+
+
+        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 349, null);
+        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 299, null);
 
         this.g.dispose();
         this.bs.show();

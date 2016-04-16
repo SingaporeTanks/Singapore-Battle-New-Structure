@@ -1,11 +1,6 @@
 package game;
 
-/**
- * Created by EViyachev on 10.4.2016 г..
- */
-
 import display.Display;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
