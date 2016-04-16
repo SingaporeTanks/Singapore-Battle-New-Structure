@@ -8,9 +8,12 @@ import objects.BasicEnemy;
 import objects.BossEnemy;
 import objects.HardEnemy;
 import objects.Player;
+
+import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+
 import static graphics.Assets.player;
 
 public class Game implements Runnable {
@@ -28,6 +31,7 @@ public class Game implements Runnable {
     private SpriteSheet sh;
     private SpriteSheet shObstacles;
     private SpriteSheet ss1;
+    private Clip sfire, stank, sboom, scrash, sbron;
     private int x = 0;
 
     public static Player player;
@@ -49,6 +53,12 @@ public class Game implements Runnable {
         this.sh = new SpriteSheet(ResourceLoader.loadResource("/texture/15_tank_set.png"));
         this.shObstacles = new SpriteSheet(ResourceLoader.loadResource("/texture/obstacles_1.png"));
         this.ss1 = new SpriteSheet(ResourceLoader.loadResource("/texture/tankUp.png"));
+        Sound.playSound("res/audio/tank.wav").join();
+        this.sfire = ResourceLoader.loadSound("res/audio/fire.wav");
+        this.stank = ResourceLoader.loadSound("res/audio/tank.wav");
+        this.sboom = ResourceLoader.loadSound("res/audio/boom.wav");
+        this.scrash = ResourceLoader.loadSound("res/audio/crash.wav");
+        this.sbron = ResourceLoader.loadSound("res/audio/bron.wav");
         player = new Player(350, 400);
         basicEnemy1 = new BasicEnemy(200, 250);
         basicEnemy2 = new BasicEnemy(500, 250);
@@ -83,7 +93,7 @@ public class Game implements Runnable {
         this.g.drawImage(ResourceLoader.loadResource("/texture/grass_logo2.jpg"), 0, 0, 800, 600, null);
         BufferedImage imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");
         if (player.goingDown) {
-           imgPlayer = ResourceLoader.loadResource("/texture/tankDown.png");
+            imgPlayer = ResourceLoader.loadResource("/texture/tankDown.png");
         } else if (player.goingLeft) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankLeft.png");
         } else if (player.goingRight) {
