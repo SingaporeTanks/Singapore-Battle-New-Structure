@@ -1,5 +1,7 @@
 package objects;
 
+import game.Game;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -13,9 +15,10 @@ public abstract class Machine {
     protected int velocity;
     //speed
 
-    public Machine(int x, int y) {
+    public Machine(int x, int y, int velocity) {
         this.x = x;
         this.y = y;
+        this.velocity = velocity;
     }
 
     public void setX(int x) {
@@ -34,28 +37,17 @@ public abstract class Machine {
         return y;
     }
 
-
-    public void setVelX(int velX) {
-
-        this.velocity = velX;
-    }
-
-    public void setVelY(int velY) {
-
-        this.velocity = velY;
-    }
-
-    public int getVelX() {
+    public int getVel() {
         return velocity;
     }
 
-    public int getVelY() {
-        return velocity;
-    }
-
-    public abstract void move();
+    public abstract void move(Rectangle[] obstacles);
 
     public abstract void render(Graphics g, BufferedImage img);
 
-}
+    public enum Heading {
+        UP, DOWN, RIGHT, LEFT;
+    }
 
+    public abstract void keepInBounds ();
+}

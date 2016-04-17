@@ -5,9 +5,12 @@ package objects;
  */
 public abstract class Enemy extends Machine {
 
+    public static int velocity;
+
     public Enemy(int x, int y) {
-        super(x, y);
-        this.x = x;
-        this.y = y;
+        super(x, y, velocity);
+        velocity = 2;
     }
+
+    public abstract void keepInBounds();
 }

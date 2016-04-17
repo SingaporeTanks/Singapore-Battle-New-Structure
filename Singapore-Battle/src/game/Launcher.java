@@ -7,8 +7,7 @@ import display.Display;
  */
 public class Launcher {
     public static void main(String[] args) {
-        //Display display = new Display("Singapore Battle", 800, 600);
-        Game game = new Game("Singapore Battle", 800, 600);
+        Game game = new Game("Singapore Battle");
         game.start();
     }
 }

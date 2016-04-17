@@ -12,7 +12,6 @@ public class Assets {
     public static BufferedImage background;
     public static BufferedImage player;
     public static BufferedImage hardEnemy;
-    public static BufferedImage bossEnemy;
     public static BufferedImage basicEnemy;
 
     //Loads every resource needed for the game
@@ -22,7 +21,6 @@ public class Assets {
         SpriteSheet sheet = new SpriteSheet(ResourceLoader.loadResource("/texture/15_tank_set.png"));
         player = sheet.cut(0, 0, width, height);
         hardEnemy = sheet.cut(width, 0, width, height);
-        bossEnemy = sheet.cut(width, height, width, height);
         basicEnemy = sheet.cut(2 * width, 2 * height, width, height);
     }
 }
