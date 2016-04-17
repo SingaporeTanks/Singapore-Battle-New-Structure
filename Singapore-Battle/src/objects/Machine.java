@@ -1,13 +1,8 @@
 package objects;
 
-import game.Game;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-/**
- * Created by oxana_bs on 10.4.2016 г..
- */
 public abstract class Machine {
 
     protected int x, y;

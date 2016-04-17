@@ -7,7 +7,6 @@ import objects.*;
 import objects.BasicEnemy;
 import objects.HardEnemy;
 import objects.Player;
-
 import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -20,6 +19,7 @@ public class Game implements Runnable {
     private String name;
     private int width, height;
     private Display display;
+
     private Thread thread;
     private Boolean running = false;
     private InputHandler inputHandler;
@@ -28,7 +28,9 @@ public class Game implements Runnable {
 
     private BufferedImage img;
     private SpriteSheet shObstacles;
-    private Machine.Heading heading;
+    private Machine.Heading headingPlayer;
+    private BasicEnemy.Heading basicEnemy1heading;
+    private BasicEnemy.Heading basicEnemy2heading;
     private Clip sfire, stank, sboom, scrash, sbron;
     public static Player player;
     public static BasicEnemy basicEnemy1;
@@ -56,12 +58,6 @@ public class Game implements Runnable {
         this.img = ResourceLoader.loadResource("/texture/grass_logo2.jpg");
         this.shObstacles = new SpriteSheet(ResourceLoader.loadResource("/texture/obstacles_1.png"));
 
-        this.sfire = ResourceLoader.loadSound("res/audio/fire.wav");
-        this.stank = ResourceLoader.loadSound("res/audio/tank.wav");
-        this.sboom = ResourceLoader.loadSound("res/audio/boom.wav");
-        this.scrash = ResourceLoader.loadSound("res/audio/crash.wav");
-        this.sbron = ResourceLoader.loadSound("res/audio/bron.wav");
-
         player = new Player(360, 400);
         basicEnemy1 = new BasicEnemy(200, 250);
         basicEnemy2 = new BasicEnemy(520, 250);
@@ -75,6 +71,9 @@ public class Game implements Runnable {
 //        if (StateManager.getState() != null) {
 //            StateManager.getState().tick();
 //        }
+        basicEnemy1.move(obstacles);
+        basicEnemy2.move(obstacles);
+        hardEnemy.move(obstacles);
         player.move(obstacles);
         player.keepInBounds();
     }
@@ -88,30 +87,29 @@ public class Game implements Runnable {
         }
 
         this.g = this.bs.getDrawGraphics();
-
         this.g.drawImage(ResourceLoader.loadResource("/texture/grass_logo2.jpg"), 0, 0, 800, 600, null);
         BufferedImage imgPlayer = null;
-        if (heading == Machine.Heading.UP) {
+        if (headingPlayer == Machine.Heading.UP) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");
-        } else if (heading == Machine.Heading.DOWN) {
+        } else if (headingPlayer == Machine.Heading.DOWN) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankDown.png");
-        } else if (heading == Machine.Heading.LEFT) {
+        } else if (headingPlayer == Machine.Heading.LEFT) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankLeft.png");
-        } else if (heading == Machine.Heading.RIGHT) {
+        } else if (headingPlayer == Machine.Heading.RIGHT) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankRight.png");
         }
         if (player.goingDown) {
-            imgPlayer = ResourceLoader.loadResource("/texture/tankDown.png");
-            heading = Machine.Heading.DOWN;
+           imgPlayer = ResourceLoader.loadResource("/texture/tankDown.png");
+            headingPlayer = Machine.Heading.DOWN;
         } else if (player.goingLeft) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankLeft.png");
-            heading = Machine.Heading.LEFT;
+            headingPlayer = Machine.Heading.LEFT;
         } else if (player.goingRight) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankRight.png");
-            heading = Machine.Heading.RIGHT;
+            headingPlayer = Machine.Heading.RIGHT;
         } else if (player.goingUp) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");
-            heading = Machine.Heading.UP;
+            headingPlayer = Machine.Heading.UP;
         }
 
         BufferedImage imgBasicEnemy = ResourceLoader.loadResource("/texture/BasicEnemyUp.png");
@@ -156,7 +154,7 @@ public class Game implements Runnable {
         if (running) {
             return;
         }
-        heading = Machine.Heading.UP;
+        headingPlayer = Machine.Heading.UP;
         //Setting the while-game-loop to run
         running = true;
         //Initialize the thread that will work with "this" class (game.Game)

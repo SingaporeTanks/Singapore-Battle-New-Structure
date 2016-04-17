@@ -1,8 +1,5 @@
 package game;
 
-/**
- * Created by oxana_bs on 17.4.2016 г..
- */
 public final class Bullet {
     private final static int BUFSIZE = 32;
     private short[] x = null;

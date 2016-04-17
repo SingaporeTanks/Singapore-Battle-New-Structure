@@ -8,9 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by oxana_bs on 9.4.2016 г..
- */
 public class ResourceLoader {
     //Method that returns a resource
     public static BufferedImage loadResource(String path) {

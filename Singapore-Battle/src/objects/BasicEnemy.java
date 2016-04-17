@@ -1,9 +1,7 @@
 package objects;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-/**
- * Created by oxana_bs on 10.4.2016 г..
- */
+
 public class BasicEnemy extends Enemy{
 
     public static int velocity;

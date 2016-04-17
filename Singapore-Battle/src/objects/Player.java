@@ -42,16 +42,16 @@ public class Player extends Machine {
         for (int i = 0; i < obstacles.length; i++) {
             if (this.playerDimension.intersects(obstacles[i])) {
                 if (goingUp) {
-                    this.y = obstacles[i].y + 53 + 14;
+                    this.y = obstacles[i].y + PLAYER_HEIGHT + 14;
                 }
                 if (goingDown) {
-                    this.y = obstacles[i].y - 53 - 25;
+                    this.y = obstacles[i].y - PLAYER_HEIGHT - 25;
                 }
                 if (goingRight) {
-                    this.x = obstacles[i].x - 53 - 25;
+                    this.x = obstacles[i].x - PLAYER_WIDTH - 25;
                 }
                 if (goingLeft) {
-                    this.x = obstacles[i].x + 53 + 14;
+                    this.x = obstacles[i].x + PLAYER_WIDTH + 14;
                 }
                 return;
             }
@@ -74,10 +74,6 @@ public class Player extends Machine {
 
     public void render(Graphics g, BufferedImage img) {
         g.drawImage(img, this.x, this.y, null);
-    }
-
-    public enum Heading {
-        UP, DOWN, RIGHT, LEFT;
     }
 
     @Override
