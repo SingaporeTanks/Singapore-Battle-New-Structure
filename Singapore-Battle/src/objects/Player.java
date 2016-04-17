@@ -21,7 +21,7 @@ public class Player extends Machine {
 
     public Player(int x, int y) {
         super(x, y, velocity);
-        this.velocity = 2;
+        this.velocity = 4;
         this.goingUp = false;
         this.goingDown = false;
         this.goingLeft = false;

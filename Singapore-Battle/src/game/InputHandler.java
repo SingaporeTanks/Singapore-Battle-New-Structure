@@ -16,9 +16,9 @@ public class InputHandler implements KeyListener {
         int keyCode = e.getKeyCode();
 
        // for test
-        if (keyCode == KeyEvent.VK_ENTER) {
-            Sound.playSound("res/audio/tank.wav").join();
-        }
+//        if (keyCode == KeyEvent.VK_ENTER) {
+//            Sound.playSound("res/audio/tank.wav").join();
+//        }
         //end
 
         if (keyCode == KeyEvent.VK_UP) {
