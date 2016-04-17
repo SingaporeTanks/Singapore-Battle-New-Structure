@@ -3,9 +3,6 @@ package display;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created by oxana_bs on 9.4.2016 г..
- */
 public class Display {
     private JFrame frame;
     private String title;

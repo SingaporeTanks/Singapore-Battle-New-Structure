@@ -3,14 +3,28 @@ package game;
 import display.Display;
 import graphics.ResourceLoader;
 import graphics.SpriteSheet;
+<<<<<<< HEAD
 import objects.*;
+=======
+import objects.BasicEnemy;
+import objects.BossEnemy;
+import objects.HardEnemy;
+import objects.Player;
+
+import javax.sound.sampled.Clip;
+>>>>>>> origin/master
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+<<<<<<< HEAD
 /**
  * Created by oxana_bs on 9.4.2016 г..
  */
+=======
+import static graphics.Assets.player;
+
+>>>>>>> origin/master
 public class Game implements Runnable {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
@@ -28,7 +42,13 @@ public class Game implements Runnable {
     private BufferedImage img;
     private SpriteSheet sh;
     private SpriteSheet shObstacles;
+<<<<<<< HEAD
     private Machine.Heading heading;
+=======
+    private SpriteSheet ss1;
+    private Clip sfire, stank, sboom, scrash, sbron;
+    private int x = 0;
+>>>>>>> origin/master
 
     public static Player player;
     public static BasicEnemy basicEnemy1;
@@ -53,9 +73,19 @@ public class Game implements Runnable {
 
     public void init() {
         this.display = new Display(this.name, this.width, this.height);
-        this.img = ResourceLoader.loadResource("/texture/grass.jpg");
+        this.img = ResourceLoader.loadResource("/texture/grass_logo2.jpg");
         this.sh = new SpriteSheet(ResourceLoader.loadResource("/texture/15_tank_set.png"));
         this.shObstacles = new SpriteSheet(ResourceLoader.loadResource("/texture/obstacles_1.png"));
+<<<<<<< HEAD
+=======
+        this.ss1 = new SpriteSheet(ResourceLoader.loadResource("/texture/tankUp.png"));
+        Sound.playSound("res/audio/tank.wav").join();
+        this.sfire = ResourceLoader.loadSound("res/audio/fire.wav");
+        this.stank = ResourceLoader.loadSound("res/audio/tank.wav");
+        this.sboom = ResourceLoader.loadSound("res/audio/boom.wav");
+        this.scrash = ResourceLoader.loadSound("res/audio/crash.wav");
+        this.sbron = ResourceLoader.loadSound("res/audio/bron.wav");
+>>>>>>> origin/master
         player = new Player(350, 400);
         basicEnemy1 = new BasicEnemy(200, 250);
         basicEnemy2 = new BasicEnemy(500, 250);
@@ -82,6 +112,7 @@ public class Game implements Runnable {
         }
 
         this.g = this.bs.getDrawGraphics();
+<<<<<<< HEAD
         this.g.drawImage(ResourceLoader.loadResource("/texture/grass.jpg"), 0, 0, 800, 600, null);
         BufferedImage imgPlayer = null;
         if (heading == Machine.Heading.UP) {
@@ -105,6 +136,18 @@ public class Game implements Runnable {
         } else if (player.goingUp) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");
             heading = Machine.Heading.UP;
+=======
+        this.g.drawImage(ResourceLoader.loadResource("/texture/grass_logo2.jpg"), 0, 0, 800, 600, null);
+        BufferedImage imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");
+        if (player.goingDown) {
+            imgPlayer = ResourceLoader.loadResource("/texture/tankDown.png");
+        } else if (player.goingLeft) {
+            imgPlayer = ResourceLoader.loadResource("/texture/tankLeft.png");
+        } else if (player.goingRight) {
+            imgPlayer = ResourceLoader.loadResource("/texture/tankRight.png");
+        } else if (player.goingUp) {
+            imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");
+>>>>>>> origin/master
         }
         BufferedImage imgBasicEnemy = sh.cut(68, 0, 68, 68);
         BufferedImage imgHardEnemy = sh.cut(136, 68, 68, 68);
@@ -122,6 +165,13 @@ public class Game implements Runnable {
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 647, 300, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 249, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 300, null);
+
+        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 349, null);
+        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 299, null);
+
+
+        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 349, null);
+        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 299, null);
 
         this.g.dispose();
         this.bs.show();

@@ -1,9 +1,5 @@
 package game;
 
-/**
- * Created by EViyachev on 10.4.2016 г..
- */
-
 import display.Display;
 
 import java.awt.event.KeyEvent;
@@ -11,13 +7,19 @@ import java.awt.event.KeyListener;
 
 public class InputHandler implements KeyListener {
 
-    public InputHandler (Display display) {
+    public InputHandler(Display display) {
         display.getCanvas().addKeyListener(this);
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
+
+       // for test
+        if (keyCode == KeyEvent.VK_ENTER) {
+            Sound.playSound("res/audio/tank.wav").join();
+        }
+        //end
 
         if (keyCode == KeyEvent.VK_UP) {
             Game.player.goingUp = true;
