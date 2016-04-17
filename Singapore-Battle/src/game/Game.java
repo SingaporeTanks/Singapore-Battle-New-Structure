@@ -7,6 +7,7 @@ import objects.*;
 import objects.BasicEnemy;
 import objects.HardEnemy;
 import objects.Player;
+
 import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -19,7 +20,6 @@ public class Game implements Runnable {
     private String name;
     private int width, height;
     private Display display;
-
     private Thread thread;
     private Boolean running = false;
     private InputHandler inputHandler;
@@ -88,6 +88,10 @@ public class Game implements Runnable {
         }
 
         this.g = this.bs.getDrawGraphics();
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         this.g.drawImage(ResourceLoader.loadResource("/texture/grass_logo2.jpg"), 0, 0, 800, 600, null);
         BufferedImage imgPlayer = null;
         if (heading == Machine.Heading.UP) {
@@ -100,7 +104,7 @@ public class Game implements Runnable {
             imgPlayer = ResourceLoader.loadResource("/texture/tankRight.png");
         }
         if (player.goingDown) {
-           imgPlayer = ResourceLoader.loadResource("/texture/tankDown.png");
+            imgPlayer = ResourceLoader.loadResource("/texture/tankDown.png");
             heading = Machine.Heading.DOWN;
         } else if (player.goingLeft) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankLeft.png");

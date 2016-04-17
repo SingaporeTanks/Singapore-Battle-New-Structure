@@ -15,6 +15,7 @@ public class InputHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
+<<<<<<< HEAD
 
 //        if (keyCode == KeyEvent.VK_ENTER) {
 //            Sound.playSound("res/audio/tank.wav").join();
@@ -22,6 +23,8 @@ public class InputHandler implements KeyListener {
 //  }
 
 
+=======
+>>>>>>> origin/master
         if (keyCode == KeyEvent.VK_UP) {
             Game.player.goingUp = true;
             Sound.playSound("res/audio/boom.wav").join();
