@@ -88,10 +88,7 @@ public class Game implements Runnable {
         }
 
         this.g = this.bs.getDrawGraphics();
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
         this.g.drawImage(ResourceLoader.loadResource("/texture/grass_logo2.jpg"), 0, 0, 800, 600, null);
         BufferedImage imgPlayer = null;
         if (heading == Machine.Heading.UP) {
@@ -133,12 +130,10 @@ public class Game implements Runnable {
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 249, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 300, null);
 
-        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 349, null);
-        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 299, null);
+//
 
 
-        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 349, null);
-        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 299, null);
+
 
         this.g.dispose();
         this.bs.show();
