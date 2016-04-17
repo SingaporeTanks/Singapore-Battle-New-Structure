@@ -5,9 +5,6 @@ import game.Game;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-/**
- * Created by oxana_bs on 10.4.2016 г..
- */
 public class Player extends Machine {
     public static final int PLAYER_WIDTH = 53;
     public static final int PLAYER_HEIGHT = 53;
@@ -21,7 +18,7 @@ public class Player extends Machine {
 
     public Player(int x, int y) {
         super(x, y, velocity);
-        this.velocity = 4;
+        this.velocity = 3;
         this.goingUp = false;
         this.goingDown = false;
         this.goingLeft = false;
@@ -42,16 +39,16 @@ public class Player extends Machine {
         for (int i = 0; i < obstacles.length; i++) {
             if (this.playerDimension.intersects(obstacles[i])) {
                 if (goingUp) {
-                    this.y = obstacles[i].y + 53 + 4;
+                    this.y = obstacles[i].y + 53 + 14;
                 }
                 if (goingDown) {
-                    this.y = obstacles[i].y - 53 - 23;
+                    this.y = obstacles[i].y - 53 - 25;
                 }
                 if (goingRight) {
-                    this.x = obstacles[i].x - 53 - 23;
+                    this.x = obstacles[i].x - 53 - 25;
                 }
                 if (goingLeft) {
-                    this.x = obstacles[i].x + 53 + 4;
+                    this.x = obstacles[i].x + 53 + 14;
                 }
                 return;
             }

@@ -27,10 +27,8 @@ public class Game implements Runnable {
     private Graphics g;
 
     private BufferedImage img;
-    private SpriteSheet sh;
     private SpriteSheet shObstacles;
     private Machine.Heading heading;
-    private SpriteSheet ss1;
     private Clip sfire, stank, sboom, scrash, sbron;
     public static Player player;
     public static BasicEnemy basicEnemy1;
@@ -56,9 +54,7 @@ public class Game implements Runnable {
     public void init() {
         this.display = new Display(this.name, this.width, this.height);
         this.img = ResourceLoader.loadResource("/texture/grass_logo2.jpg");
-        this.sh = new SpriteSheet(ResourceLoader.loadResource("/texture/15_tank_set.png"));
         this.shObstacles = new SpriteSheet(ResourceLoader.loadResource("/texture/obstacles_1.png"));
-        this.ss1 = new SpriteSheet(ResourceLoader.loadResource("/texture/tankUp.png"));
 
         this.sfire = ResourceLoader.loadSound("res/audio/fire.wav");
         this.stank = ResourceLoader.loadSound("res/audio/tank.wav");
@@ -66,10 +62,10 @@ public class Game implements Runnable {
         this.scrash = ResourceLoader.loadSound("res/audio/crash.wav");
         this.sbron = ResourceLoader.loadSound("res/audio/bron.wav");
 
-        player = new Player(350, 400);
+        player = new Player(360, 400);
         basicEnemy1 = new BasicEnemy(200, 250);
-        basicEnemy2 = new BasicEnemy(500, 250);
-        hardEnemy = new HardEnemy(350, 50);
+        basicEnemy2 = new BasicEnemy(520, 250);
+        hardEnemy = new HardEnemy(360, 50);
         this.inputHandler = new InputHandler(this.display);
     }
 
@@ -116,9 +112,9 @@ public class Game implements Runnable {
             imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");
             heading = Machine.Heading.UP;
         }
-        BufferedImage imgBasicEnemy = sh.cut(68, 0, 68, 68);
-        BufferedImage imgHardEnemy = sh.cut(136, 68, 68, 68);
 
+        BufferedImage imgBasicEnemy = ResourceLoader.loadResource("/texture/BasicEnemyUp.png");
+        BufferedImage imgHardEnemy = ResourceLoader.loadResource("/texture/HardEnemyUp.png");
         player.render(g, imgPlayer);
         basicEnemy1.render(g, imgBasicEnemy);
         basicEnemy2.render(g, imgBasicEnemy);
@@ -132,12 +128,6 @@ public class Game implements Runnable {
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 647, 300, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 249, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 300, null);
-
-        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 349, null);
-        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 299, null);
-
-
-        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 349, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 299, null);
 
         this.g.dispose();
