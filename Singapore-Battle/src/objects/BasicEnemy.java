@@ -1,22 +1,18 @@
 package objects;
 
 import game.Game;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-/**
- * Created by oxana_bs on 10.4.2016 г..
- */
 public class BasicEnemy extends Enemy {
 
     public static final int ENEMY_WIDTH = 60;
     public static final int ENEMY_HEIGHT = 60;
     public static int velocity;
-    int dx;
-    int dy;
-    int time = 0;
+    public int dx;
+    public int dy;
+    public int time = 0;
     public Heading heading;
     public Rectangle enemyDimension;
 
@@ -42,22 +38,22 @@ public class BasicEnemy extends Enemy {
                     dx = 0;
                     dy = 2;
                     this.heading = Heading.DOWN;
-                    break; // straight down
+                    break;
                 case 1:
                     dx = 2;
                     dy = 0;
                     this.heading = Heading.RIGHT;
-                    break; // diagonal down
+                    break;
                 case 2:
                     dx = -2;
                     dy = 0;
                     this.heading = Heading.LEFT;
-                    break; // straight across
+                    break;
                 case 3:
                     dx = 0;
                     dy = -2;
                     this.heading = Heading.UP;
-                    break; // diagonal up
+                    break;
             }
         }
         this.enemyDimension.setBounds(this.x, this.y, ENEMY_WIDTH, ENEMY_HEIGHT);

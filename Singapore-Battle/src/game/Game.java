@@ -65,10 +65,6 @@ public class Game implements Runnable {
 
     //The method that will update all the variables
     private void tick() {
-        //Checks if a State exists and tick()
-//        if (StateManager.getState() != null) {
-//            StateManager.getState().tick();
-//        }
         basicEnemy1.move(obstacles);
         basicEnemy2.move(obstacles);
         //hardEnemy.move(obstacles);
@@ -114,7 +110,7 @@ public class Game implements Runnable {
 
         BufferedImage imgBasicEnemy1 = null;
         BufferedImage imgBasicEnemy2 = null;
-        //BufferedImage imgHardEnemy = ResourceLoader.loadResource("/texture/HardEnemyUp.png");
+        BufferedImage imgHardEnemy = ResourceLoader.loadResource("/texture/HardEnemyUp.png");
         if (basicEnemy1.heading == BasicEnemy.Heading.UP) {
             imgBasicEnemy1 = ResourceLoader.loadResource("/texture/BasicEnemyUp.png");
         } else if (basicEnemy1.heading == BasicEnemy.Heading.DOWN) {
@@ -137,7 +133,7 @@ public class Game implements Runnable {
         player.render(g, imgPlayer);
         basicEnemy1.render(g, imgBasicEnemy1);
         basicEnemy2.render(g, imgBasicEnemy2);
-        //hardEnemy.render(g, imgHardEnemy);
+        hardEnemy.render(g, imgHardEnemy);
 
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 0, 300, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 51, 300, null);
