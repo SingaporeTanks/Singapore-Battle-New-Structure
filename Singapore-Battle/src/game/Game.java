@@ -29,8 +29,6 @@ public class Game implements Runnable {
     private BufferedImage img;
     private SpriteSheet shObstacles;
     private Machine.Heading headingPlayer;
-    private BasicEnemy.Heading basicEnemy1heading;
-    private BasicEnemy.Heading basicEnemy2heading;
     private Clip sfire, stank, sboom, scrash, sbron;
     public static Player player;
     public static BasicEnemy basicEnemy1;
@@ -59,8 +57,8 @@ public class Game implements Runnable {
         this.shObstacles = new SpriteSheet(ResourceLoader.loadResource("/texture/obstacles_1.png"));
 
         player = new Player(360, 400);
-        basicEnemy1 = new BasicEnemy(200, 250);
-        basicEnemy2 = new BasicEnemy(520, 250);
+        basicEnemy1 = new BasicEnemy(200, 250, BasicEnemy.Heading.DOWN);
+        basicEnemy2 = new BasicEnemy(520, 250, BasicEnemy.Heading.DOWN);
         hardEnemy = new HardEnemy(360, 50);
         this.inputHandler = new InputHandler(this.display);
     }
@@ -73,9 +71,11 @@ public class Game implements Runnable {
 //        }
         basicEnemy1.move(obstacles);
         basicEnemy2.move(obstacles);
-        hardEnemy.move(obstacles);
+        //hardEnemy.move(obstacles);
         player.move(obstacles);
         player.keepInBounds();
+        basicEnemy1.keepInBounds();
+        basicEnemy2.keepInBounds();
     }
 
     public void render() {
@@ -112,12 +112,32 @@ public class Game implements Runnable {
             headingPlayer = Machine.Heading.UP;
         }
 
-        BufferedImage imgBasicEnemy = ResourceLoader.loadResource("/texture/BasicEnemyUp.png");
-        BufferedImage imgHardEnemy = ResourceLoader.loadResource("/texture/HardEnemyUp.png");
+        BufferedImage imgBasicEnemy1 = null;
+        BufferedImage imgBasicEnemy2 = null;
+        //BufferedImage imgHardEnemy = ResourceLoader.loadResource("/texture/HardEnemyUp.png");
+        if (basicEnemy1.heading == BasicEnemy.Heading.UP) {
+            imgBasicEnemy1 = ResourceLoader.loadResource("/texture/BasicEnemyUp.png");
+        } else if (basicEnemy1.heading == BasicEnemy.Heading.DOWN) {
+            imgBasicEnemy1 = ResourceLoader.loadResource("/texture/BasicEnemyDown.png");
+        } else if (basicEnemy1.heading == BasicEnemy.Heading.LEFT) {
+            imgBasicEnemy1 = ResourceLoader.loadResource("/texture/BasicEnemyLeft.png");
+        } else if (basicEnemy1.heading == BasicEnemy.Heading.RIGHT) {
+            imgBasicEnemy1 = ResourceLoader.loadResource("/texture/BasicEnemyRight.png");
+        }
+
+        if (basicEnemy2.heading == BasicEnemy.Heading.UP) {
+            imgBasicEnemy2 = ResourceLoader.loadResource("/texture/BasicEnemyUp.png");
+        } else if (basicEnemy2.heading == BasicEnemy.Heading.DOWN) {
+            imgBasicEnemy2 = ResourceLoader.loadResource("/texture/BasicEnemyDown.png");
+        } else if (basicEnemy2.heading == BasicEnemy.Heading.LEFT) {
+            imgBasicEnemy2 = ResourceLoader.loadResource("/texture/BasicEnemyLeft.png");
+        } else if (basicEnemy2.heading == BasicEnemy.Heading.RIGHT) {
+            imgBasicEnemy2 = ResourceLoader.loadResource("/texture/BasicEnemyRight.png");
+        }
         player.render(g, imgPlayer);
-        basicEnemy1.render(g, imgBasicEnemy);
-        basicEnemy2.render(g, imgBasicEnemy);
-        hardEnemy.render(g, imgHardEnemy);
+        basicEnemy1.render(g, imgBasicEnemy1);
+        basicEnemy2.render(g, imgBasicEnemy2);
+        //hardEnemy.render(g, imgHardEnemy);
 
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 0, 300, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 51, 300, null);
@@ -127,7 +147,6 @@ public class Game implements Runnable {
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 647, 300, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 249, null);
         this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 360, 300, null);
-        this.g.drawImage(this.shObstacles.cut(0, 0, 51, 51), 749, 299, null);
 
         this.g.dispose();
         this.bs.show();
