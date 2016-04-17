@@ -1,6 +1,6 @@
 package objects;
 
-import game.Game;
+import game.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,6 +15,8 @@ public class Player extends Machine {
     public static boolean goingRight;
     public static int velocity;
     public Rectangle playerDimension;
+    public Bullet shots;
+
 
     public Player(int x, int y) {
         super(x, y, velocity);
@@ -23,6 +25,7 @@ public class Player extends Machine {
         this.goingDown = false;
         this.goingLeft = false;
         this.goingRight = false;
+        this.shots = new Bullet();
         this.playerDimension = new Rectangle(x, y, PLAYER_WIDTH, PLAYER_HEIGHT);
     }
 
