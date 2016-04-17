@@ -31,7 +31,7 @@ public class Game implements Runnable {
     private SpriteSheet shObstacles;
     private Machine.Heading heading;
     private SpriteSheet ss1;
-    private Clip sfire, stank, sboom, scrash, sbron;
+
     public static Player player;
     public static BasicEnemy basicEnemy1;
     public static BasicEnemy basicEnemy2;
@@ -60,11 +60,7 @@ public class Game implements Runnable {
         this.shObstacles = new SpriteSheet(ResourceLoader.loadResource("/texture/obstacles_1.png"));
         this.ss1 = new SpriteSheet(ResourceLoader.loadResource("/texture/tankUp.png"));
 
-        this.sfire = ResourceLoader.loadSound("res/audio/fire.wav");
-        this.stank = ResourceLoader.loadSound("res/audio/tank.wav");
-        this.sboom = ResourceLoader.loadSound("res/audio/boom.wav");
-        this.scrash = ResourceLoader.loadSound("res/audio/crash.wav");
-        this.sbron = ResourceLoader.loadSound("res/audio/bron.wav");
+
 
         player = new Player(350, 400);
         basicEnemy1 = new BasicEnemy(200, 250);
@@ -92,7 +88,7 @@ public class Game implements Runnable {
         }
 
         this.g = this.bs.getDrawGraphics();
-        this.g.drawImage(ResourceLoader.loadResource("/texture/grass.jpg"), 0, 0, 800, 600, null);
+        this.g.drawImage(ResourceLoader.loadResource("/texture/grass_logo2.jpg"), 0, 0, 800, 600, null);
         BufferedImage imgPlayer = null;
         if (heading == Machine.Heading.UP) {
             imgPlayer = ResourceLoader.loadResource("/texture/tankUp.png");

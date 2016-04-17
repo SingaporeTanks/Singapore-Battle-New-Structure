@@ -2,9 +2,7 @@ package graphics;
 
 import java.awt.image.BufferedImage;
 
-/**
- * Created by oxana_bs on 9.4.2016 г..
- */
+
 public class Assets {
 
     private static final int width = 68, height = 68;
@@ -16,9 +14,10 @@ public class Assets {
 
     //Loads every resource needed for the game
     public static void init() {
-        background = ResourceLoader.loadResource("/texture/grass.jpg");
+        background = ResourceLoader.loadResource("/texture/grass_logo2.jpg");
 
-        SpriteSheet sheet = new SpriteSheet(ResourceLoader.loadResource("/texture/15_tank_set.png"));
+        SpriteSheet sheet = new SpriteSheet(ResourceLoader
+                .loadResource("/texture/15_tank_set.png"));
         player = sheet.cut(0, 0, width, height);
         hardEnemy = sheet.cut(width, 0, width, height);
         basicEnemy = sheet.cut(2 * width, 2 * height, width, height);

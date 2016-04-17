@@ -24,9 +24,11 @@ public class Sound {
             clip = AudioSystem.getClip();
             clip.open(stream);
             clip.addLineListener(new Listener());
-            volumeC = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            volumeC = (FloatControl) clip.getControl(FloatControl.
+                    Type.MASTER_GAIN);
             released = true;
-        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException exc) {
+        } catch (IOException | UnsupportedAudioFileException |
+                LineUnavailableException exc) {
             exc.printStackTrace();
             released = false;
         }

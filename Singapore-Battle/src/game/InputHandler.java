@@ -15,27 +15,36 @@ public class InputHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-       // for test
+
 //        if (keyCode == KeyEvent.VK_ENTER) {
 //            Sound.playSound("res/audio/tank.wav").join();
-//        }
-        //end
+//
+//  }
+
 
         if (keyCode == KeyEvent.VK_UP) {
             Game.player.goingUp = true;
+            Sound.playSound("res/audio/boom.wav").join();
         }
         if (keyCode == KeyEvent.VK_DOWN) {
             Game.player.goingDown = true;
+            Sound.playSound("res/audio/boom.wav").join();
         }
         if (keyCode == KeyEvent.VK_LEFT) {
             Game.player.goingLeft = true;
+            Sound.playSound("res/audio/boom.wav").join();
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
             Game.player.goingRight = true;
+            Sound.playSound("res/audio/boom.wav").join();
         }
+
         if (keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(0);
         }
+
+
+
     }
 
     @Override
