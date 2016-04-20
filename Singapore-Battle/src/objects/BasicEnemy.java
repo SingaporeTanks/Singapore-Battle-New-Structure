@@ -101,5 +101,6 @@ public class BasicEnemy extends Enemy {
         }
         this.x = newX;
         this.y = newY;
+        //collision with borders
     }
 }
